@@ -54,6 +54,11 @@ class ParticipantController extends Controller
     }
 
     /**
+     * @urlParam  id required The ID of the activity.
+     * @bodyParam  email string required The email of the participant. Example: example@example.com
+     * @bodyParam  firstName string required The first name of the participant.Example: john
+     * @bodyParam  lastName string required The last name of the participant. Example: doe
+     *
      * @param ParticipantCreateRequest $request
      * @return Participant
      * @throws \App\Exceptions\ActivityNotFoundException
@@ -70,6 +75,8 @@ class ParticipantController extends Controller
     }
 
     /**
+     * @urlParam  id required The ID of the participant.
+     *
      * @param ParticipantShowRequest $request
      * @return Participant
      * @throws \App\Exceptions\ParticipantNotFoundException
@@ -82,6 +89,11 @@ class ParticipantController extends Controller
     }
 
     /**
+     * @urlParam  id required The ID of the activity.
+     * @bodyParam  email string required The email of the participant. Example: example@example.com
+     * @bodyParam  firstName string required The first name of the participant.Example: john
+     * @bodyParam  lastName string required The last name of the participant. Example: doe
+     *
      * @param ParticipantUpdateRequest $request
      * @return Participant
      * @throws \App\Exceptions\ParticipantAlreadyExistException
@@ -100,6 +112,8 @@ class ParticipantController extends Controller
     }
 
     /**
+     * @urlParam  id required The ID of the participant.
+     *
      * @param ParticipantDestroyRequest $request
      * @return Participant
      * @throws \App\Exceptions\ParticipantNotFoundException
