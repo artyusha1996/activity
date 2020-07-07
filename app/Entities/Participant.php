@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Participant
  * @package App\Models
+ * @property int $id
  * @property string $first_name
  * @property string $last_name
  * @property string $email
@@ -21,4 +22,12 @@ class Participant extends Model
         'last_name',
         'email',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class, 'activity_has_participants');
+    }
 }

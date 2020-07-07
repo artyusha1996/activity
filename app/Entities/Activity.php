@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Activity
  * @package App\Models
+ * @property integer $id
  * @property integer city_id
  * @property string name
  * @property string starts_at

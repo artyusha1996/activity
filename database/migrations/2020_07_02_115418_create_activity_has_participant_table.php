@@ -13,7 +13,7 @@ class CreateActivityHasParticipantTable extends Migration
      */
     public function up()
     {
-        Schema::create('activity_has_participant', function (Blueprint $table) {
+        Schema::create('activity_has_participants', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('activity_id');
             $table->unsignedBigInteger('participant_id');
