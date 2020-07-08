@@ -56,10 +56,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        $httpCode = $exception->getCode();
+        $httpCode = Response::HTTP_INTERNAL_SERVER_ERROR;
         $statusCode =  $exception->getCode();
         $details = [
-            'message' => 'Server error',
+            'message' => $exception->getMessage(),
         ];
 
         if ($exception instanceof ValidationException) {
@@ -107,7 +107,9 @@ class Handler extends ExceptionHandler
         ];
 
         if ($httpCode === Response::HTTP_INTERNAL_SERVER_ERROR && !config('app.debug')) {
-            $data['details'] = [];
+            $data['details'] = [
+                'message' => 'Server error',
+            ];
         }
 
         return response()->json($data, $httpCode);

@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Criteria\ParticipantByActivityCriteria;
 use App\Entities\Activity;
 use App\Entities\Participant;
+use App\Events\ParticipantCreatedEvent;
 use App\Exceptions\ParticipantAlreadyExistException;
 use App\Exceptions\ParticipantHasAlreadyAttachedToTheActivityException;
 use App\Exceptions\ParticipantNotFoundException;
@@ -23,7 +24,7 @@ class ParticipantService
      */
     private $participantRepository;
     /**
-     * @var ActivityHasParticipantRepositoryRepository
+     * @var ActivityHasParticipantRepository
      */
     private $activityHasParticipantRepository;
 
@@ -127,6 +128,9 @@ class ParticipantService
             DB::rollBack();
             throw $exception;
         }
+
+        event(new ParticipantCreatedEvent($participant));
+
         DB::commit();
 
 

@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Participant
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Participant extends Model
 {
+    use Notifiable;
     /**
      * @var string[]
      */
